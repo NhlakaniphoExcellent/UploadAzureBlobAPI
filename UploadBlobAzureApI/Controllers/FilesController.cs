@@ -46,7 +46,7 @@ namespace UploadBlobAzureApI.Controllers
         [Route("filename")]
         public async Task<IActionResult> Delete(string filename)
         {
-            var result = await _fileService.DownloadAsync(filename);
+            var result = await _fileService.DeleteAsync(filename);
             return Ok(result);
         }
     }

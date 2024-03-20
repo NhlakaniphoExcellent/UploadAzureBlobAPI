@@ -7,18 +7,22 @@ namespace UploadBlobAzureApI.Models
     // This is for acccessing and securing our storage azure account in container using key in "Access Keys"
     public class FileService
     {
+    //  private readonly string _connectionstring = "DefaultEndpointsProtocol=https;AccountName=firststorage001;AccountKey=kP382sum5oyIth3r0rmfYfe0ffn9zy7OeBL/FaDOs90XkMrxgaPy6RaD5tQlrPoLxAuGRXL+r0bu+AStyV/U+g==;EndpointSuffix=core.windows.net";
+    //  private readonly string _containername = "firststoragecontainer001";
         private readonly string _storageaccount = "firststorage001";
         private readonly string _key = "kP382sum5oyIth3r0rmfYfe0ffn9zy7OeBL/FaDOs90XkMrxgaPy6RaD5tQlrPoLxAuGRXL+r0bu+AStyV/U+g==";
         private readonly BlobContainerClient _fileContainer;
 
         public FileService()
         {
-            var credential = new StorageSharedKeyCredential(_key, _storageaccount);
-            var BlobUri = $"https//{ _storageaccount }.blob.core.windows.net";
+            var credential = new StorageSharedKeyCredential(_storageaccount, _key);
+            var BlobUri = $"https://{_storageaccount}.blob.core.windows.net";
             var blobserviceClient = new BlobServiceClient(new Uri(BlobUri), credential);
-            _fileContainer = blobserviceClient.GetBlobContainerClient("files");
-        }
+            _fileContainer = blobserviceClient.GetBlobContainerClient("firststoragecontainer001");
 
+        }
+      
+        
         // This method lists through all files in azure storage (container) database.
         public async Task<List<BlobDTO>> ListAsync()
         {
