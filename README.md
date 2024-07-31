@@ -8,3 +8,4 @@ This application securely uploads files to Blob Storage in Microsoft Azure, it p
 * Microsoft Azure
 * Azure Blob Storage
 * ASP.NET Web API
+* Swagger UI
